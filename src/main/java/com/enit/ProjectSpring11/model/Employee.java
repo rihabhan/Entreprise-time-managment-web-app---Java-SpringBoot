@@ -1,4 +1,4 @@
-package com.enit.ProjectSpring.model;
+package com.enit.ProjectSpring11.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,7 +11,8 @@ import javax.persistence.Table;
 @Table(name = "employe")
 public class Employee {
 	    @Id
-	    @GeneratedValue(strategy=GenerationType.AUTO)
+	    //@GeneratedValue(strategy=GenerationType.IDENTITY)
+	    @Column(name = "numEmploye")
 	    private int numEmploye;
 	    @Column(name = "nom")
 		private String nom;

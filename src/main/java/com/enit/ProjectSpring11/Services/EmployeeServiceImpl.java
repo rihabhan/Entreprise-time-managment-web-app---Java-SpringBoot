@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.enit.ProjectSpring.model.Employee;
 import com.enit.ProjectSpring11.Repository.EmployeeRepository;
+import com.enit.ProjectSpring11.model.Employee;
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 	@Autowired
@@ -15,6 +15,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public List<Employee> getEmployees() {
 		return eRepository.findAll() ;
+	}
+	@Override
+	public Employee saveEmployee(Employee e) {
+		return eRepository.save(e);
 	}
 
 }

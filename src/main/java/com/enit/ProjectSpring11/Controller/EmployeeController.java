@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.enit.ProjectSpring.model.Employee;
 import com.enit.ProjectSpring11.Services.EmployeeService;
+import com.enit.ProjectSpring11.model.Employee;
 
 
 //@Controller
@@ -38,21 +38,21 @@ return eservice.getEmployees();
 }
 //localhost:8886/employees/idnumberProvided
 @GetMapping("/employees/{id}")
-public String getEmployees(@PathVariable("id") Long id )
+public String getEmployees(@PathVariable("id") int id )
 {
 return "fetching the emplyee details for the id "+ id;
 }	
 @PostMapping("/employees")
-public String saveEmployees(@RequestBody Employee employee) {
-	return "saving the emplyees to the database"+ employee;
+public Employee saveEmployees(@RequestBody Employee employee) {
+	return eservice.saveEmployee(employee);
 }
 //localhost:8886/employees?id=idnumberProvided
 @DeleteMapping("/employees")
-public String deleteEmployee(@RequestParam("id") Long id) {
+public String deleteEmployee(@RequestParam("id") int id) {
 	return "deleting the emplyee details for the id "+ id;
 }
 @PutMapping("/employees/{id}")
-public Employee updateEmployee(@PathVariable("id") Long id, @RequestBody Employee employee)
+public Employee updateEmployee(@PathVariable("id") int id, @RequestBody Employee employee)
 { 	System.out.println("updateeeeeeeeeed");
 	return employee;
 	}
