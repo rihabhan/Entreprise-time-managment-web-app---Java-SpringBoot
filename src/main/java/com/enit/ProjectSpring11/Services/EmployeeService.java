@@ -1,11 +1,10 @@
-package enit.com.ProjectSpring11.services;
-
+package com.enit.ProjectSpring11.Services;
 
 import java.util.List;
 
 import com.enit.ProjectSpring.model.Employee;
 
 public interface EmployeeService {
+	List <Employee> getEmployees();
 
-	List<Employee> getEmployees();
 }

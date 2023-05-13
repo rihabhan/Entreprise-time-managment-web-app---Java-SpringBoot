@@ -1,7 +1,28 @@
 package com.enit.ProjectSpring.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "employe")
 public class Employee {
-	   private int numEmploye;
+	    @Id
+	    @GeneratedValue(strategy=GenerationType.AUTO)
+	    private int numEmploye;
+	    @Column(name = "nom")
+		private String nom;
+	    @Column(name = "prenom")
+		private String prenom;
+	    @Column(name = "telIntern")
+		private String telIntern;
+	    @Column(name = "email")
+		private String email;
+	    @Column(name = "niveau")
+		private int niveau;
 	   public int getNumEmploye() {
 		return numEmploye;
 	}
@@ -43,10 +64,6 @@ public class Employee {
 	public void setNiveau(int niveau) {
 		this.niveau = niveau;
 	}
-	private String nom;
-	private String prenom;
-	private String telIntern;
-	private String email;
-	private int niveau;
+	
 
 }
