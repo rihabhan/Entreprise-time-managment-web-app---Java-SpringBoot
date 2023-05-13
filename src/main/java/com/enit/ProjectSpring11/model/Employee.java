@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,6 +26,9 @@ public class Employee {
 		private String email;
 	    @Column(name = "niveau")
 		private int niveau;
+		@ManyToOne
+		@JoinColumn(name="num_dept")
+		private Department department;
 	   public int getNumEmploye() {
 		return numEmploye;
 	}
@@ -33,7 +38,7 @@ public class Employee {
 	@Override
 	public String toString() {
 		return "Employee [numEmploye=" + numEmploye + ", nom=" + nom + ", prenom=" + prenom + ", telIntern=" + telIntern
-				+ ", email=" + email + ", niveau=" + niveau + "]";
+				+ ", email=" + email + ", niveau=" + niveau + ", department=" + department + "]";
 	}
 	public String getNom() {
 		return nom;
@@ -61,6 +66,12 @@ public class Employee {
 	}
 	public int getNiveau() {
 		return niveau;
+	}
+	public Department getDepartment() {
+		return department;
+	}
+	public void setDepartment(Department department) {
+		this.department = department;
 	}
 	public void setNiveau(int niveau) {
 		this.niveau = niveau;
