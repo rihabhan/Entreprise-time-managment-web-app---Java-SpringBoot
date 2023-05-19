@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Employee</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        
+        h1 {
+            color: #333;
+        }
+        
+        form {
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        label {
+            display: inline-block;
+            width: 120px;
+            margin-bottom: 10px;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        select {
+            width: 200px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        
+        button[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        
+    </style>
+</head>
+<body>
+	<a href="/employees" class="btn btn-primary">Go back</a>
+
+    <h1>Update Employee</h1>
+    
+    <form method="post" th:action="@{/saveUpdatedEmployee}">
+        <input type="hidden" name="numEmploye" th:value="${employee.numEmploye}" />
+        
+        <label for="nom">First Name:</label>
+        <input type="text" id="nom" name="nom" th:value="${employee.nom}" />
+        <br />
+        
+        <label for="prenom">Last Name:</label>
+        <input type="text" id="prenom" name="prenom" th:value="${employee.prenom}" />
+        <br />
+        
+        <label for="department">Department:</label>
+        <select id="department" name="department.numDept">
+            <option th:each="department : ${departments}"
+                    th:value="${department.numDept}"
+                    th:selected="${department.numDept == employee.department.numDept}">
+                <span th:text="${department.nom}"></span>
+            </option>
+        </select>
+        <br />
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" th:value="${employee.email}" />
+        <br />
+        
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>

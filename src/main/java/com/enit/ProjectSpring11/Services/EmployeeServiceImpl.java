@@ -20,5 +20,21 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public Employee saveEmployee(Employee e) {
 		return eRepository.save(e);
 	}
+	@Override
+	public void deleteEmployee(int numEmploye) {
+		// TODO Auto-generated method stub
+		eRepository.deleteById(numEmploye);
+	}
+    @Override
+    public Employee getEmployeeById(int numEmploye) {
+        return eRepository.findById(numEmploye)
+                .orElseThrow(() -> new RuntimeException("Employee not found"));
+    }
+
+    @Override
+    public void updateEmployee(Employee employee) {
+        eRepository.save(employee);
+    }
+
 
 }

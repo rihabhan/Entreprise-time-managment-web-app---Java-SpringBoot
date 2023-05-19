@@ -25,5 +25,12 @@ public class DepartmentServiceImpl implements DepartmentService {
 		
 		return dRepository.save(d);
 	}
-
+	@Override
+	public void deleteDepartment(int id) {
+	    dRepository.deleteById(id);
+	}
+    @Override
+    public Department getDepartmentById(int id) {
+        return dRepository.findById(id).orElse(null);
+    }
 }

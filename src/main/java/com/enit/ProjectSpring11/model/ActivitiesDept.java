@@ -4,6 +4,9 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -13,7 +16,7 @@ import javax.persistence.Table;
 @Table(name = "activitiesdept")
 public class ActivitiesDept {
 	@Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "num_act")
     private int numAct;
 
@@ -26,7 +29,30 @@ public class ActivitiesDept {
     @Column(name = "date_act")
     private Date dateAct;
 
-    @Column(name = "h_debut")
+    public ActivitiesDept(int numAct) {
+		super();
+		this.numAct = numAct;
+	}
+
+	public ActivitiesDept() {
+		super();
+	}
+
+	public ActivitiesDept(int numAct, String typeD, String descript, Date dateAct, Date hDebut, Date hFin,
+			Date dateCreation, String createur, AgendaDept agenda) {
+		super();
+		this.numAct = numAct;
+		this.typeD = typeD;
+		this.descript = descript;
+		this.dateAct = dateAct;
+		this.hDebut = hDebut;
+		this.hFin = hFin;
+		this.dateCreation = dateCreation;
+		this.createur = createur;
+		this.agenda = agenda;
+	}
+
+	@Column(name = "h_debut")
     private Date hDebut;
 
     @Column(name = "h_fin")
@@ -117,7 +143,7 @@ public class ActivitiesDept {
 	@Column(name = "createur")
     private String createur;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "num_agendadept")
     private AgendaDept agenda;
 

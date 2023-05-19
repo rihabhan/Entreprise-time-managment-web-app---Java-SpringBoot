@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda Department</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+        h2 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ccc;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+                button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Agenda Departments List</h2> 
+        <a href="/departments" class="btn btn-primary">Go back</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Agenda Department ID</th>
+                <th>Date MAJ</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Iterate over the list of Agenda Departments and display each one -->
+            <tr th:each="agendadept : ${agendadepts}">
+                <td th:text="${agendadept.numAgendaDept}"></td>
+                <td th:text="${agendadept.dateMAJ}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

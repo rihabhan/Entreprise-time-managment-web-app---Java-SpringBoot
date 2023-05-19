@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.enit.ProjectSpring11.Repository.AgendaDeptRepository;
 import com.enit.ProjectSpring11.model.AgendaDept;
+import com.enit.ProjectSpring11.model.Department;
 @Service
 public class AgendaDeptServiceImpl implements AgendaDeptService {
 	@Autowired
@@ -20,5 +21,6 @@ public class AgendaDeptServiceImpl implements AgendaDeptService {
 	public AgendaDept saveAgendaDept(AgendaDept agd) {
 		return agdRepository.save(agd);
 	}
+
 
 }

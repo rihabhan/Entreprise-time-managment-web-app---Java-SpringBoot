@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Department</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: inline-block;
+            width: 120px;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"] {
+            width: 200px;
+            padding: 6px 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+	<a href="/departments" class="btn btn-primary">Go back</a>
+
+    <h1>Edit Department</h1>
+
+    <form th:action="@{/departments/{id}(id=${department.numDept})}" method="post">
+        <input type="hidden" th:name="_method" value="PUT" />
+        
+        <label for="nom">Name:</label>
+        <input type="text" id="nom" name="nom" th:value="${department.nom}" required><br>
+        
+        <label for="chef">Chef:</label>
+        <input type="text" id="chef" name="chef" th:value="${department.chef.numEmploye}" required><br>
+        
+        <label for="agendadeptt">Agenda:</label>
+        <input type="text" id="agendadeptt" name="agendadeptt" th:value="${department.agendadeptt.numAgendaDept}" required><br>
+        
+        <input type="submit" value="Update Department">
+    </form>
+</body>
+</html>

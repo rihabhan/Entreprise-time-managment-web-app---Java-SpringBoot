@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 200px;
+            padding: 5px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <h2>SQL Page</h2>
+    <a href="/" class="btn btn-primary">Go to Welcome Page</a>
+    <form method="post" action="/execute-sql">
+        <textarea name="query" rows="10" cols="50"></textarea><br>
+        <input type="submit" value="Execute">
+    </form>
+    
+    <h3>Query Results:</h3>
+    <table>
+        <thead>
+            <tr>
+                <th th:each="column : ${columns}" th:text="${column}"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="row : ${rows}">
+                <td th:each="value : ${row}" th:text="${value}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
